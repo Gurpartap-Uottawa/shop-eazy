@@ -1,1 +1,4 @@
 django >=4.0, <5
+pymysql
+django-paypal
+mysqlclient

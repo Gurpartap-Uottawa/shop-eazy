@@ -12,12 +12,12 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
-# Fake PyMySQL's version and install as MySQLdb
-# https://adamj.eu/tech/2020/02/04/how-to-use-pymysql-with-django/
-#add to every setting files as mac has compatibility issue with mysqlclient
-import pymysql
-pymysql.version_info = (1, 4, 2, "final", 0)
-pymysql.install_as_MySQLdb()
+# MySQL configuration
+# Using mysqlclient for better performance and compatibility
+# If you encounter issues, you can uncomment the PyMySQL configuration below
+# import pymysql
+# pymysql.version_info = (1, 4, 2, "final", 0)
+# pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -154,9 +154,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'shopeazy/static/'
-STATIC_ROOT = 'frontendshopeazy/'
-STATICFILES_DIRS = [BASE_DIR/ 'shopeazy/static/']
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'shopeazy/static/',
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR/ 'media'
